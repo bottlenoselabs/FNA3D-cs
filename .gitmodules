@@ -4,3 +4,6 @@
 [submodule "ext/FNA3D"]
 	path = ext/FNA3D
 	url = https://github.com/FNA-XNA/FNA3D
+[submodule "ext/my-msbuild"]
+	path = ext/my-msbuild
+	url = https://github.com/lithiumtoast/my-msbuild.git
