@@ -4,6 +4,7 @@ uname_str="$(uname | tr '[:upper:]' '[:lower:]')"
 echo "Started building native libraries... OS: $uname_str, Directory: $script_dir"
 
 if [[ ! -z "$1" ]]; then
+    echo "Using custom SDL library path: $1"
     sdl_library_file_path="$1"
 elif [[ "$uname_str" == "linux" ]]; then
     sdl_library_file_path="$script_dir/lib/libSDL2-2.0.so"
@@ -12,6 +13,7 @@ elif [[ "$uname_str" == "darwin" ]]; then
 fi
 
 if [[ ! -z "$2" ]]; then
+    echo "Using custom SDL include path: $2"
     sdl_include_directory_path="$2"
 elif [ ! -d "$script_dir/SDL" ]; then
     git clone https://github.com/libsdl-org/SDL $script_dir/SDL
@@ -39,7 +41,7 @@ if [ ! -f "$sdl_library_file_path" ]; then
 fi
 
 build_dir="$script_dir/cmake-build-release-fna3d"
-lib_dir="$script_dir/lib/"
+lib_dir="$script_dir/lib"
 
 cmake -S $script_dir/ext/FNA3D -B $build_dir -DSDL2_INCLUDE_DIRS="$sdl_include_directory_path" -DSDL2_LIBRARIES="$sdl_library_file_path"
 cmake --build $build_dir --config Release
@@ -50,7 +52,8 @@ if [[ "$uname_str" == "linux" ]]; then
     mv "$filepath" "$lib_dir/libFNA3D.so"
 elif [[ "$uname_str" == "darwin" ]]; then
     mv "$filepath" "$lib_dir/libFNA3D.dylib"
-    install_name_tool -delete_rpath "$script_dir/lib" "$lib_dir/libFNA3D.dylib"
+    lc_rpath="$(dirname $sdl_library_file_path)"
+    install_name_tool -delete_rpath "$lc_rpath" "$lib_dir/libFNA3D.dylib"
 fi
 
 rm -r $build_dir
