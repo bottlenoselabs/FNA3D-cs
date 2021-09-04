@@ -22,44 +22,44 @@ public static unsafe partial class FNA3D_Image
 {
     private const string LibraryName = "FNA3D";
 
-    // Function @ FNA3D_Image.h:73:19 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // Function @ FNA3D_Image.h:73:19 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [DllImport(LibraryName)]
     public static extern byte* FNA3D_Image_Load(FNA3D_Image_ReadFunc readFunc, FNA3D_Image_SkipFunc skipFunc, FNA3D_Image_EOFFunc eofFunc, void* context, int* w, int* h, int* len, int forceW, int forceH, byte zoom);
 
-    // Function @ FNA3D_Image.h:90:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // Function @ FNA3D_Image.h:90:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_Image_Free(byte* mem);
 
-    // Function @ FNA3D_Image.h:110:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // Function @ FNA3D_Image.h:110:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_Image_SavePNG(FNA3D_Image_WriteFunc writeFunc, void* context, int srcW, int srcH, int dstW, int dstH, byte* data);
 
-    // Function @ FNA3D_Image.h:131:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // Function @ FNA3D_Image.h:131:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_Image_SaveJPG(FNA3D_Image_WriteFunc writeFunc, void* context, int srcW, int srcH, int dstW, int dstH, byte* data, int quality);
 
-    // FunctionPointer @ FNA3D_Image.h:46:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // FunctionPointer @ FNA3D_Image.h:46:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Image_ReadFunc
     {
         public delegate* unmanaged<void*, CString8U, int, int> Pointer;
     }
 
-    // FunctionPointer @ FNA3D_Image.h:51:27 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // FunctionPointer @ FNA3D_Image.h:51:27 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Image_SkipFunc
     {
         public delegate* unmanaged<void*, int, void> Pointer;
     }
 
-    // FunctionPointer @ FNA3D_Image.h:55:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // FunctionPointer @ FNA3D_Image.h:55:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Image_EOFFunc
     {
         public delegate* unmanaged<void*, int> Pointer;
     }
 
-    // FunctionPointer @ FNA3D_Image.h:94:27 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
+    // FunctionPointer @ FNA3D_Image.h:94:27 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D_Image.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Image_WriteFunc
     {

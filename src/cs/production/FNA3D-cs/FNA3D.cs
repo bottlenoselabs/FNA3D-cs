@@ -22,314 +22,314 @@ public static unsafe partial class FNA3D
 {
     private const string LibraryName = "FNA3D";
 
-    // Function @ FNA3D.h:472:19 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:472:19 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern uint FNA3D_LinkedVersion();
 
-    // Function @ FNA3D.h:486:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:486:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_HookLogFunctions(FNA3D_LogFunc info, FNA3D_LogFunc warn, FNA3D_LogFunc error);
 
-    // Function @ FNA3D.h:499:19 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:499:19 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern uint FNA3D_PrepareWindowAttributes();
 
-    // Function @ FNA3D.h:507:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:507:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetDrawableSize(void* window, int* w, int* h);
 
-    // Function @ FNA3D.h:518:24 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:518:24 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Device* FNA3D_CreateDevice(FNA3D_PresentationParameters* presentationParameters, byte debugMode);
 
-    // Function @ FNA3D.h:524:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:524:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_DestroyDevice(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:534:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:534:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SwapBuffers(FNA3D_Device* device, FNA3D_Rect* sourceRectangle, FNA3D_Rect* destinationRectangle, void* overrideWindowHandle);
 
-    // Function @ FNA3D.h:551:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:551:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_Clear(FNA3D_Device* device, FNA3D_ClearOptions options, FNA3D_Vec4* color, float depth, int stencil);
 
-    // Function @ FNA3D.h:570:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:570:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_DrawIndexedPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int baseVertex, int minVertexIndex, int numVertices, int startIndex, int primitiveCount, FNA3D_Buffer* indices, FNA3D_IndexElementSize indexElementSize);
 
-    // Function @ FNA3D.h:594:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:594:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_DrawInstancedPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int baseVertex, int minVertexIndex, int numVertices, int startIndex, int primitiveCount, int instanceCount, FNA3D_Buffer* indices, FNA3D_IndexElementSize indexElementSize);
 
-    // Function @ FNA3D.h:612:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:612:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_DrawPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int vertexStart, int primitiveCount);
 
-    // Function @ FNA3D.h:628:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:628:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetViewport(FNA3D_Device* device, FNA3D_Viewport* viewport);
 
-    // Function @ FNA3D.h:637:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:637:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetScissorRect(FNA3D_Device* device, FNA3D_Rect* scissor);
 
-    // Function @ FNA3D.h:643:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:643:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetBlendFactor(FNA3D_Device* device, FNA3D_Color* blendFactor);
 
-    // Function @ FNA3D.h:652:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:652:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetBlendFactor(FNA3D_Device* device, FNA3D_Color* blendFactor);
 
-    // Function @ FNA3D.h:661:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:661:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern int FNA3D_GetMultiSampleMask(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:667:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:667:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetMultiSampleMask(FNA3D_Device* device, int mask);
 
-    // Function @ FNA3D.h:673:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:673:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern int FNA3D_GetReferenceStencil(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:679:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:679:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetReferenceStencil(FNA3D_Device* device, int @ref);
 
-    // Function @ FNA3D.h:689:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:689:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetBlendState(FNA3D_Device* device, FNA3D_BlendState* blendState);
 
-    // Function @ FNA3D.h:700:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:700:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetDepthStencilState(FNA3D_Device* device, FNA3D_DepthStencilState* depthStencilState);
 
-    // Function @ FNA3D.h:712:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:712:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ApplyRasterizerState(FNA3D_Device* device, FNA3D_RasterizerState* rasterizerState);
 
-    // Function @ FNA3D.h:725:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:725:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_VerifySampler(FNA3D_Device* device, int index, FNA3D_Texture* texture, FNA3D_SamplerState* sampler);
 
-    // Function @ FNA3D.h:740:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:740:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_VerifyVertexSampler(FNA3D_Device* device, int index, FNA3D_Texture* texture, FNA3D_SamplerState* sampler);
 
-    // Function @ FNA3D.h:762:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:762:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ApplyVertexBufferBindings(FNA3D_Device* device, FNA3D_VertexBufferBinding* bindings, int numBindings, byte bindingsUpdated, int baseVertex);
 
-    // Function @ FNA3D.h:783:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:783:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetRenderTargets(FNA3D_Device* device, FNA3D_RenderTargetBinding* renderTargets, int numRenderTargets, FNA3D_Renderbuffer* depthStencilBuffer, FNA3D_DepthFormat depthFormat, byte preserveTargetContents);
 
-    // Function @ FNA3D.h:797:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:797:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ResolveTarget(FNA3D_Device* device, FNA3D_RenderTargetBinding* target);
 
-    // Function @ FNA3D.h:809:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:809:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ResetBackbuffer(FNA3D_Device* device, FNA3D_PresentationParameters* presentationParameters);
 
-    // Function @ FNA3D.h:825:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:825:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ReadBackbuffer(FNA3D_Device* device, int x, int y, int w, int h, void* data, int dataLength);
 
-    // Function @ FNA3D.h:840:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:840:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetBackbufferSize(FNA3D_Device* device, int* w, int* h);
 
-    // Function @ FNA3D.h:850:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:850:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_SurfaceFormat FNA3D_GetBackbufferSurfaceFormat(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:858:28 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:858:28 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_DepthFormat FNA3D_GetBackbufferDepthFormat(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:864:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:864:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern int FNA3D_GetBackbufferMultiSampleCount(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:879:25 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:879:25 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Texture* FNA3D_CreateTexture2D(FNA3D_Device* device, FNA3D_SurfaceFormat format, int width, int height, int levelCount, byte isRenderTarget);
 
-    // Function @ FNA3D.h:899:25 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:899:25 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Texture* FNA3D_CreateTexture3D(FNA3D_Device* device, FNA3D_SurfaceFormat format, int width, int height, int depth, int levelCount);
 
-    // Function @ FNA3D.h:918:25 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:918:25 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Texture* FNA3D_CreateTextureCube(FNA3D_Device* device, FNA3D_SurfaceFormat format, int size, int levelCount, byte isRenderTarget);
 
-    // Function @ FNA3D.h:933:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:933:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeTexture(FNA3D_Device* device, FNA3D_Texture* texture);
 
-    // Function @ FNA3D.h:949:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:949:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetTextureData2D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:974:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:974:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetTextureData3D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int z, int w, int h, int d, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1000:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1000:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetTextureDataCube(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, FNA3D_CubeMapFace cubeMapFace, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1025:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1025:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetTextureDataYUV(FNA3D_Device* device, FNA3D_Texture* y, FNA3D_Texture* u, FNA3D_Texture* v, int yWidth, int yHeight, int uvWidth, int uvHeight, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1051:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1051:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetTextureData2D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1078:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1078:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetTextureData3D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int z, int w, int h, int d, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1107:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1107:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetTextureDataCube(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, FNA3D_CubeMapFace cubeMapFace, int level, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1132:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1132:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Renderbuffer* FNA3D_GenColorRenderbuffer(FNA3D_Device* device, int width, int height, FNA3D_SurfaceFormat format, int multiSampleCount, FNA3D_Texture* texture);
 
-    // Function @ FNA3D.h:1150:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1150:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Renderbuffer* FNA3D_GenDepthStencilRenderbuffer(FNA3D_Device* device, int width, int height, FNA3D_DepthFormat format, int multiSampleCount);
 
-    // Function @ FNA3D.h:1165:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1165:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeRenderbuffer(FNA3D_Device* device, FNA3D_Renderbuffer* renderbuffer);
 
-    // Function @ FNA3D.h:1181:24 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1181:24 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Buffer* FNA3D_GenVertexBuffer(FNA3D_Device* device, byte dynamic, FNA3D_BufferUsage usage, int sizeInBytes);
 
-    // Function @ FNA3D.h:1195:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1195:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeVertexBuffer(FNA3D_Device* device, FNA3D_Buffer* buffer);
 
-    // Function @ FNA3D.h:1216:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1216:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetVertexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int elementCount, int elementSizeInBytes, int vertexStride, FNA3D_SetDataOptions options);
 
-    // Function @ FNA3D.h:1242:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1242:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetVertexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int elementCount, int elementSizeInBytes, int vertexStride);
 
-    // Function @ FNA3D.h:1263:24 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1263:24 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Buffer* FNA3D_GenIndexBuffer(FNA3D_Device* device, byte dynamic, FNA3D_BufferUsage usage, int sizeInBytes);
 
-    // Function @ FNA3D.h:1277:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1277:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeIndexBuffer(FNA3D_Device* device, FNA3D_Buffer* buffer);
 
-    // Function @ FNA3D.h:1290:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1290:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetIndexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int dataLength, FNA3D_SetDataOptions options);
 
-    // Function @ FNA3D.h:1306:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1306:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetIndexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int dataLength);
 
-    // Function @ FNA3D.h:1331:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1331:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_CreateEffect(FNA3D_Device* device, byte* effectCode, uint effectCodeLength, FNA3D_Effect** effect, MOJOSHADER_effect** effectData);
 
-    // Function @ FNA3D.h:1345:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1345:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_CloneEffect(FNA3D_Device* device, FNA3D_Effect* cloneSource, FNA3D_Effect** effect, MOJOSHADER_effect** effectData);
 
-    // Function @ FNA3D.h:1359:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1359:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeEffect(FNA3D_Device* device, FNA3D_Effect* effect);
 
-    // Function @ FNA3D.h:1369:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1369:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetEffectTechnique(FNA3D_Device* device, FNA3D_Effect* effect, MOJOSHADER_effectTechnique* technique);
 
-    // Function @ FNA3D.h:1384:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1384:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_ApplyEffect(FNA3D_Device* device, FNA3D_Effect* effect, uint pass, MOJOSHADER_effectStateChanges* stateChanges);
 
-    // Function @ FNA3D.h:1401:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1401:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_BeginPassRestore(FNA3D_Device* device, FNA3D_Effect* effect, MOJOSHADER_effectStateChanges* stateChanges);
 
-    // Function @ FNA3D.h:1412:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1412:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_EndPassRestore(FNA3D_Device* device, FNA3D_Effect* effect);
 
-    // Function @ FNA3D.h:1423:23 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1423:23 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern FNA3D_Query* FNA3D_CreateQuery(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:1432:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1432:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_AddDisposeQuery(FNA3D_Device* device, FNA3D_Query* query);
 
-    // Function @ FNA3D.h:1438:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1438:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_QueryBegin(FNA3D_Device* device, FNA3D_Query* query);
 
-    // Function @ FNA3D.h:1446:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1446:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_QueryEnd(FNA3D_Device* device, FNA3D_Query* query);
 
-    // Function @ FNA3D.h:1454:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1454:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern byte FNA3D_QueryComplete(FNA3D_Device* device, FNA3D_Query* query);
 
-    // Function @ FNA3D.h:1462:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1462:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern int FNA3D_QueryPixelCount(FNA3D_Device* device, FNA3D_Query* query);
 
-    // Function @ FNA3D.h:1470:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1470:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern byte FNA3D_SupportsDXT1(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:1473:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1473:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern byte FNA3D_SupportsS3TC(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:1476:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1476:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern byte FNA3D_SupportsHardwareInstancing(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:1479:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1479:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern byte FNA3D_SupportsNoOverwrite(FNA3D_Device* device);
 
-    // Function @ FNA3D.h:1482:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1482:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_GetMaxTextureSlots(FNA3D_Device* device, int* textures, int* vertexTextures);
 
-    // Function @ FNA3D.h:1495:18 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1495:18 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern int FNA3D_GetMaxMultiSampleCount(FNA3D_Device* device, FNA3D_SurfaceFormat format, int multiSampleCount);
 
-    // Function @ FNA3D.h:1508:15 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Function @ FNA3D.h:1508:15 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [DllImport(LibraryName)]
     public static extern void FNA3D_SetStringMarker(FNA3D_Device* device, CString8U text);
 
-    // FunctionPointer @ FNA3D.h:478:27 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // FunctionPointer @ FNA3D.h:478:27 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_LogFunc
     {
         public delegate* unmanaged<CString8U, void> Pointer;
     }
 
-    // Struct @ FNA3D.h:343:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:343:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 48, Pack = 8)]
     public struct FNA3D_PresentationParameters
     {
@@ -364,7 +364,7 @@ public static unsafe partial class FNA3D
         public FNA3D_RenderTargetUsage renderTargetUsage;
     }
 
-    // Struct @ FNA3D.h:311:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:311:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 16, Pack = 4)]
     public struct FNA3D_Rect
     {
@@ -381,7 +381,7 @@ public static unsafe partial class FNA3D
         public int h;
     }
 
-    // Struct @ FNA3D.h:319:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:319:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 16, Pack = 4)]
     public struct FNA3D_Vec4
     {
@@ -398,7 +398,7 @@ public static unsafe partial class FNA3D
         public float w;
     }
 
-    // Struct @ FNA3D.h:329:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:329:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 24, Pack = 4)]
     public struct FNA3D_Viewport
     {
@@ -421,7 +421,7 @@ public static unsafe partial class FNA3D
         public float maxDepth;
     }
 
-    // Struct @ FNA3D.h:303:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:303:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 4, Pack = 1)]
     public struct FNA3D_Color
     {
@@ -438,7 +438,7 @@ public static unsafe partial class FNA3D
         public byte a;
     }
 
-    // Struct @ FNA3D.h:359:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:359:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 48, Pack = 4)]
     public struct FNA3D_BlendState
     {
@@ -479,7 +479,7 @@ public static unsafe partial class FNA3D
         public int multiSampleMask;
     }
 
-    // Struct @ FNA3D.h:379:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:379:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 60, Pack = 4)]
     public struct FNA3D_DepthStencilState
     {
@@ -532,7 +532,7 @@ public static unsafe partial class FNA3D
         public int referenceStencil;
     }
 
-    // Struct @ FNA3D.h:389:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:389:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 20, Pack = 4)]
     public struct FNA3D_RasterizerState
     {
@@ -555,7 +555,7 @@ public static unsafe partial class FNA3D
         public byte multiSampleAntiAlias;
     }
 
-    // Struct @ FNA3D.h:400:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:400:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 28, Pack = 4)]
     public struct FNA3D_SamplerState
     {
@@ -581,7 +581,7 @@ public static unsafe partial class FNA3D
         public int maxMipLevel;
     }
 
-    // Struct @ FNA3D.h:423:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:423:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 32, Pack = 8)]
     public struct FNA3D_VertexBufferBinding
     {
@@ -598,7 +598,7 @@ public static unsafe partial class FNA3D
         public int instanceFrequency;
     }
 
-    // Struct @ FNA3D.h:456:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:456:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 40, Pack = 8)]
     public struct FNA3D_RenderTargetBinding
     {
@@ -618,7 +618,7 @@ public static unsafe partial class FNA3D
         public FNA3D_Renderbuffer* colorBuffer;
     }
 
-    // Struct @ FNA3D.h:415:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:415:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 16, Pack = 8)]
     public struct FNA3D_VertexDeclaration
     {
@@ -632,7 +632,7 @@ public static unsafe partial class FNA3D
         public FNA3D_VertexElement* elements;
     }
 
-    // Struct @ FNA3D.h:408:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Struct @ FNA3D.h:408:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Explicit, Size = 16, Pack = 4)]
     public struct FNA3D_VertexElement
     {
@@ -649,61 +649,61 @@ public static unsafe partial class FNA3D
         public int usageIndex;
     }
 
-    // OpaqueType @ FNA3D.h:55:29 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:55:29 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Device
     {
     }
 
-    // OpaqueType @ FNA3D.h:57:29 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:57:29 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Buffer
     {
     }
 
-    // OpaqueType @ FNA3D.h:56:30 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:56:30 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Texture
     {
     }
 
-    // OpaqueType @ FNA3D.h:58:35 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:58:35 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Renderbuffer
     {
     }
 
-    // OpaqueType @ FNA3D.h:59:29 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:59:29 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Effect
     {
     }
 
-    // OpaqueType @ FNA3D.h:1318:34 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:1318:34 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct MOJOSHADER_effect
     {
     }
 
-    // OpaqueType @ FNA3D.h:1319:43 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:1319:43 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct MOJOSHADER_effectTechnique
     {
     }
 
-    // OpaqueType @ FNA3D.h:1320:46 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:1320:46 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct MOJOSHADER_effectStateChanges
     {
     }
 
-    // OpaqueType @ FNA3D.h:60:28 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // OpaqueType @ FNA3D.h:60:28 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     [StructLayout(LayoutKind.Sequential)]
     public struct FNA3D_Query
     {
     }
 
-    // Enum @ FNA3D.h:96:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:96:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_ClearOptions : int
     {
         FNA3D_CLEAROPTIONS_TARGET = 1,
@@ -711,7 +711,7 @@ public static unsafe partial class FNA3D
         FNA3D_CLEAROPTIONS_STENCIL = 4
     }
 
-    // Enum @ FNA3D.h:105:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:105:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_PrimitiveType : int
     {
         FNA3D_PRIMITIVETYPE_TRIANGLELIST = 0,
@@ -721,14 +721,14 @@ public static unsafe partial class FNA3D
         FNA3D_PRIMITIVETYPE_POINTLIST_EXT = 4
     }
 
-    // Enum @ FNA3D.h:111:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:111:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_IndexElementSize : int
     {
         FNA3D_INDEXELEMENTSIZE_16BIT = 0,
         FNA3D_INDEXELEMENTSIZE_32BIT = 1
     }
 
-    // Enum @ FNA3D.h:144:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:144:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_DepthFormat : int
     {
         FNA3D_DEPTHFORMAT_NONE = 0,
@@ -737,7 +737,7 @@ public static unsafe partial class FNA3D
         FNA3D_DEPTHFORMAT_D24S8 = 3
     }
 
-    // Enum @ FNA3D.h:136:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:136:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_SurfaceFormat : int
     {
         FNA3D_SURFACEFORMAT_COLOR = 0,
@@ -763,7 +763,7 @@ public static unsafe partial class FNA3D
         FNA3D_SURFACEFORMAT_COLORBGRA_EXT = 20
     }
 
-    // Enum @ FNA3D.h:154:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:154:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_CubeMapFace : int
     {
         FNA3D_CUBEMAPFACE_POSITIVEX = 0,
@@ -774,14 +774,14 @@ public static unsafe partial class FNA3D
         FNA3D_CUBEMAPFACE_NEGATIVEZ = 5
     }
 
-    // Enum @ FNA3D.h:160:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:160:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_BufferUsage : int
     {
         FNA3D_BUFFERUSAGE_NONE = 0,
         FNA3D_BUFFERUSAGE_WRITEONLY = 1
     }
 
-    // Enum @ FNA3D.h:167:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:167:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_SetDataOptions : int
     {
         FNA3D_SETDATAOPTIONS_NONE = 0,
@@ -789,7 +789,7 @@ public static unsafe partial class FNA3D
         FNA3D_SETDATAOPTIONS_NOOVERWRITE = 2
     }
 
-    // Enum @ FNA3D.h:74:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:74:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_PresentInterval : int
     {
         FNA3D_PRESENTINTERVAL_DEFAULT = 0,
@@ -798,7 +798,7 @@ public static unsafe partial class FNA3D
         FNA3D_PRESENTINTERVAL_IMMEDIATE = 3
     }
 
-    // Enum @ FNA3D.h:82:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:82:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_DisplayOrientation : int
     {
         FNA3D_DISPLAYORIENTATION_DEFAULT = 0,
@@ -807,7 +807,7 @@ public static unsafe partial class FNA3D
         FNA3D_DISPLAYORIENTATION_PORTRAIT = 3
     }
 
-    // Enum @ FNA3D.h:89:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:89:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_RenderTargetUsage : int
     {
         FNA3D_RENDERTARGETUSAGE_DISCARDCONTENTS = 0,
@@ -815,7 +815,7 @@ public static unsafe partial class FNA3D
         FNA3D_RENDERTARGETUSAGE_PLATFORMCONTENTS = 2
     }
 
-    // Enum @ FNA3D.h:184:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:184:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_Blend : int
     {
         FNA3D_BLEND_ONE = 0,
@@ -833,7 +833,7 @@ public static unsafe partial class FNA3D
         FNA3D_BLEND_SOURCEALPHASATURATION = 12
     }
 
-    // Enum @ FNA3D.h:193:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:193:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_BlendFunction : int
     {
         FNA3D_BLENDFUNCTION_ADD = 0,
@@ -843,7 +843,7 @@ public static unsafe partial class FNA3D
         FNA3D_BLENDFUNCTION_MIN = 4
     }
 
-    // Enum @ FNA3D.h:203:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:203:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_ColorWriteChannels : int
     {
         FNA3D_COLORWRITECHANNELS_NONE = 0,
@@ -854,7 +854,7 @@ public static unsafe partial class FNA3D
         FNA3D_COLORWRITECHANNELS_ALL = 15
     }
 
-    // Enum @ FNA3D.h:227:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:227:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_CompareFunction : int
     {
         FNA3D_COMPAREFUNCTION_ALWAYS = 0,
@@ -867,7 +867,7 @@ public static unsafe partial class FNA3D
         FNA3D_COMPAREFUNCTION_NOTEQUAL = 7
     }
 
-    // Enum @ FNA3D.h:215:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:215:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_StencilOperation : int
     {
         FNA3D_STENCILOPERATION_KEEP = 0,
@@ -880,14 +880,14 @@ public static unsafe partial class FNA3D
         FNA3D_STENCILOPERATION_INVERT = 7
     }
 
-    // Enum @ FNA3D.h:240:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:240:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_FillMode : int
     {
         FNA3D_FILLMODE_SOLID = 0,
         FNA3D_FILLMODE_WIREFRAME = 1
     }
 
-    // Enum @ FNA3D.h:234:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:234:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_CullMode : int
     {
         FNA3D_CULLMODE_NONE = 0,
@@ -895,7 +895,7 @@ public static unsafe partial class FNA3D
         FNA3D_CULLMODE_CULLCOUNTERCLOCKWISEFACE = 2
     }
 
-    // Enum @ FNA3D.h:260:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:260:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_TextureFilter : int
     {
         FNA3D_TEXTUREFILTER_LINEAR = 0,
@@ -909,7 +909,7 @@ public static unsafe partial class FNA3D
         FNA3D_TEXTUREFILTER_MINPOINT_MAGLINEAR_MIPPOINT = 8
     }
 
-    // Enum @ FNA3D.h:247:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:247:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_TextureAddressMode : int
     {
         FNA3D_TEXTUREADDRESSMODE_WRAP = 0,
@@ -917,7 +917,7 @@ public static unsafe partial class FNA3D
         FNA3D_TEXTUREADDRESSMODE_MIRROR = 2
     }
 
-    // Enum @ FNA3D.h:276:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:276:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_VertexElementFormat : int
     {
         FNA3D_VERTEXELEMENTFORMAT_SINGLE = 0,
@@ -934,7 +934,7 @@ public static unsafe partial class FNA3D
         FNA3D_VERTEXELEMENTFORMAT_HALFVECTOR4 = 11
     }
 
-    // Enum @ FNA3D.h:293:3 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // Enum @ FNA3D.h:293:3 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public enum FNA3D_VertexElementUsage : int
     {
         FNA3D_VERTEXELEMENTUSAGE_POSITION = 0,
@@ -952,21 +952,21 @@ public static unsafe partial class FNA3D
         FNA3D_VERTEXELEMENTUSAGE_TESSELATEFACTOR = 12
     }
 
-    // MacroObjectLike @ FNA3D.h:428:10 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:428:10 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_RENDERTARGET_TYPE_2D = 0;
 
-    // MacroObjectLike @ FNA3D.h:429:10 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:429:10 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_RENDERTARGET_TYPE_CUBE = 1;
 
-    // MacroObjectLike @ FNA3D.h:460:9 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:460:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_ABI_VERSION = 0;
 
-    // MacroObjectLike @ FNA3D.h:461:9 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:461:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_MAJOR_VERSION = 21;
 
-    // MacroObjectLike @ FNA3D.h:462:9 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:462:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_MINOR_VERSION = 9;
 
-    // MacroObjectLike @ FNA3D.h:463:9 (/Users/lstranks/Programming/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
+    // MacroObjectLike @ FNA3D.h:463:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_PATCH_VERSION = 0;
 }
