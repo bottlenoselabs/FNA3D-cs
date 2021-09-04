@@ -51,13 +51,7 @@ jobs:
         ref: ${{ env.GITHUB_REF }}
         submodules: true
 
-    - name: "Build native library: Windows"
-      if: ${{ startsWith(matrix.platform.rid, 'win') }}
-      shell: pwsh
-      run: .\library.cmd
-
-    - name: "Build native lirbary: Unix"
-      if: ${{ !startsWith(matrix.platform.rid, 'win') }}
+    - name: "Build native lirbary"
       shell: bash
       run: ./library.sh
 
