@@ -45,13 +45,22 @@ jobs:
         - { name: macOS (x64), os: macos-latest, rid: osx-x64 }
     steps:
 
+    - name: "Install the default WSL distro"
+      uses: Vampire/setup-wsl@v1
+
     - name: "Clone Git repository"
       uses: actions/checkout@master
       with:
         ref: ${{ env.GITHUB_REF }}
         submodules: true
 
-    - name: "Build native lirbary"
+    - name: "Build native library (WSL)"
+      if: ${{ startsWith(matrix.platform.rid, 'win') }}
+      shell: wsl-bash {0}
+      run: ./library.sh
+
+    - name: "Build native library (Unix)"
+      if: ${{ !startsWith(matrix.platform.rid, 'win') }}
       shell: bash
       run: ./library.sh
 
