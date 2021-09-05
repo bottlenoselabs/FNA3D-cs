@@ -20,6 +20,8 @@ elif [[ "$OS" == "Apple" ]]; then
 fi
 
 echo "Started building native libraries... OS: $OS, Directory: $DIR"
+LIB_DIRECTORY_PATH="$DIR/lib"
+mkdir -p $LIB_DIRECTORY_PATH
 
 function build_sdl() {
     echo "Building SDL..."
@@ -28,25 +30,25 @@ function build_sdl() {
         SDL_LIBRARY_FILE_PATH="$1"
         SDL_LIBRARY_FILE_NAME="$(dirname SDL_LIBRARY_FILE_PATH)"
         if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
-            echo "Custom SDL library path `$1` does not exist!"
+            echo "Custom SDL library path '$1' does not exist!"
         else
             echo "Using custom SDL library path: $1"
         fi
     elif [[ "$OS" == "Microsoft" ]]; then
         SDL_LIBRARY_FILE_NAME="SDL2.dll"
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
     elif [[ "$OS" == "Linux" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.so"
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
     elif [[ "$OS" == "Apple" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.dylib"
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
     fi
 
     if [[ ! -z "$2" ]]; then
         SDL_INCLUDE_DIRECTORY_PATH="$2"
         if [ ! -d "$SDL_INCLUDE_DIRECTORY_PATH" ]; then
-            echo "Custom SDL include path `$2` does not exist!"
+            echo "Custom SDL include path '$2' does not exist!"
         else
             echo "Using custom SDL include path: $2"
         fi
@@ -70,13 +72,13 @@ function build_sdl() {
         if [[ "$OS" == "Linux" ]]; then
             SDL_LIBRARY_FILE_PATH_BUILD="$(readlink -f $SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME)"
         elif [[ "$OS" == "Apple" ]]; then
-            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_LIBRARY_FILE_PATH"
+            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME"
         elif [[ "$OS" == "Microsoft" ]]; then
-            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_LIBRARY_FILE_PATH"
+            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME"
         fi
 
         if [[ ! -f "$SDL_LIBRARY_FILE_PATH_BUILD" ]]; then
-            echo "The file `$SDL_LIBRARY_FILE_PATH_BUILD` does not exist!"
+            echo "The file '$SDL_LIBRARY_FILE_PATH_BUILD' does not exist!"
             exit 1
         fi
 
@@ -90,11 +92,9 @@ function build_sdl() {
 
 function build_fna3d() {
     echo "Building FNA3D..."
-    build_dir="$DIR/cmake-build-release-fna3d"
-    lib_dir="$DIR/lib"
-    cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $build_dir -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
-    cmake --build $build_dir --config Release
-    mkdir -p $lib_dir
+    FNA3D_BUILD_DIR="$DIR/cmake-build-release-fna3d"
+    cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $FNA3D_BUILD_DIR -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
+    cmake --build $FNA3D_BUILD_DIR --config Release
     echo "Building FNA3D finished!"
 
     if [[ "$OS" == "Linux" ]]; then
@@ -105,14 +105,14 @@ function build_fna3d() {
         FNA3D_LIBRARY_FILENAME="FNA3D.dll"
     fi
 
-    FNA3D_LIBRARY_FILEPATH="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/$FNA3D_LIBRARY_FILENAME)"
+    FNA3D_LIBRARY_FILEPATH="$(perl -MCwd -e 'print Cwd::abs_path shift' $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
     if [[ ! -f "$FNA3D_LIBRARY_FILEPATH" ]]; then
-        echo "The file `$FNA3D_LIBRARY_FILEPATH` does not exist!"
+        echo "The file '$FNA3D_LIBRARY_FILEPATH' does not exist!"
         exit 1
     fi
-    mv "$FNA3D_LIBRARY_FILEPATH" "$lib_dir/$FNA3D_LIBRARY_FILENAME"
-
-    rm -r $build_dir
+    
+    mv "$FNA3D_LIBRARY_FILEPATH" "$LIB_DIRECTORY_PATH/$FNA3D_LIBRARY_FILENAME"
+    rm -r $FNA3D_BUILD_DIR
     echo "Finished building native libraries!"
 }
 
