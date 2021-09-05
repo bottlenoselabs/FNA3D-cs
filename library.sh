@@ -23,6 +23,14 @@ echo "Started building native libraries... OS: $OS, Directory: $DIR"
 LIB_DIRECTORY_PATH="$DIR/lib"
 mkdir -p $LIB_DIRECTORY_PATH
 
+function exit_if_last_command_failed() {
+    error=$?
+    if [ $error -ne 0 ]; then
+        echo "Last command failed: $error"
+        exit $error
+    fi
+}
+
 function build_sdl() {
     echo "Building SDL..."
 
@@ -83,9 +91,11 @@ function build_sdl() {
         fi
 
         mv "$SDL_LIBRARY_FILE_PATH_BUILD" "$SDL_LIBRARY_FILE_PATH"
+        exit_if_last_command_failed
         echo "Copied '$SDL_LIBRARY_FILE_PATH_BUILD' to '$SDL_LIBRARY_FILE_PATH'"
 
         rm -rf $SDL_BUILD_DIR
+        exit_if_last_command_failed
     fi
 
     echo "Building SDL complete!"
@@ -96,7 +106,6 @@ function build_fna3d() {
     FNA3D_BUILD_DIR="$DIR/cmake-build-release-fna3d"
     cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $FNA3D_BUILD_DIR -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
     cmake --build $FNA3D_BUILD_DIR --config Release
-    echo "Building FNA3D finished!"
 
     if [[ "$OS" == "Linux" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.so"
@@ -116,11 +125,14 @@ function build_fna3d() {
     fi
 
     mv "$FNA3D_LIBRARY_FILE_PATH_BUILD" "$FNA3D_LIBRARY_FILE_PATH"
+    exit_if_last_command_failed
     echo "Copied '$FNA3D_LIBRARY_FILE_PATH_BUILD' to '$FNA3D_LIBRARY_FILE_PATH'"
 
     rm -r $FNA3D_BUILD_DIR
-    echo "Finished building native libraries!"
+    exit_if_last_command_failed
+    echo "Building FNA3D finished!"
 }
 
 build_sdl
 build_fna3d
+echo "Finished building native libraries!"
