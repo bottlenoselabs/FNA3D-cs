@@ -21,72 +21,100 @@ fi
 
 echo "Started building native libraries... OS: $OS, Directory: $DIR"
 
-if [[ ! -z "$1" ]]; then
-    echo "Using custom SDL library path: $1"
-    sdl_library_file_path="$1"
-elif [[ "$OS" == "Microsoft" ]]; then
-    sdl_library_file_path="$DIR/lib/SDL2.dll"
-elif [[ "$OS" == "Linux" ]]; then
-    sdl_library_file_path="$DIR/lib/libSDL2-2.0.so"
-elif [[ "$OS" == "Apple" ]]; then
-    sdl_library_file_path="$DIR/lib/libSDL2-2.0.dylib"
-fi
-
-if [[ ! -z "$2" ]]; then
-    echo "Using custom SDL include path: $2"
-    sdl_include_directory_path="$2"
-elif [ ! -d "$DIR/SDL" ]; then
-    echo "Using SDL include path from clone"
-    git clone https://github.com/libsdl-org/SDL $DIR/SDL
-    sdl_include_directory_path="$DIR/SDL/include"
-else
-    echo "Using SDL include path from clone"
-    cd $DIR/SDL
-    git pull
-    cd $DIR
-    sdl_include_directory_path="$DIR/SDL/include"
-fi
-
-if [ ! -f "$sdl_library_file_path" ]; then
+function build_sdl() {
     echo "Building SDL..."
-    build_dir_sdl="$DIR/cmake-build-release-sdl"
-    cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/SDL -B $build_dir_sdl -DSDL_STATIC=OFF
-    cmake --build $build_dir_sdl --config Release
-    if [[ "$OS" == "Linux" ]]; then
-        shared_object_path="$(readlink -f $build_dir_sdl/libSDL2-2.0.so)"
-        mv "$shared_object_path" "$sdl_library_file_path"
-    elif [[ "$OS" == "Apple" ]]; then
-        shared_object_path="$build_dir_sdl/libSDL2-2.0.dylib"
-        mv "$shared_object_path" "$sdl_library_file_path"
+
+    if [[ ! -z "$1" ]]; then
+        SDL_LIBRARY_FILE_PATH="$1"
+        SDL_LIBRARY_FILE_NAME="$(dirname SDL_LIBRARY_FILE_PATH)"
+        if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
+            echo "Custom SDL library path `$1` does not exist!"
+        else
+            echo "Using custom SDL library path: $1"
+        fi
     elif [[ "$OS" == "Microsoft" ]]; then
-        shared_object_path="$build_dir_sdl/SDL2.dll"
-        mv "$shared_object_path" "$sdl_library_file_path"
+        SDL_LIBRARY_FILE_NAME="SDL2.dll"
+        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
+    elif [[ "$OS" == "Linux" ]]; then
+        SDL_LIBRARY_FILE_NAME="libSDL2-2.0.so"
+        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
+    elif [[ "$OS" == "Apple" ]]; then
+        SDL_LIBRARY_FILE_NAME="libSDL2-2.0.dylib"
+        SDL_LIBRARY_FILE_PATH="$DIR/lib/$SDL_LIBRARY_FILE_NAME"
     fi
-    rm -r $build_dir_sdl
-    rm -r $DIR/SDL
+
+    if [[ ! -z "$2" ]]; then
+        SDL_INCLUDE_DIRECTORY_PATH="$2"
+        if [ ! -d "$SDL_INCLUDE_DIRECTORY_PATH" ]; then
+            echo "Custom SDL include path `$2` does not exist!"
+        else
+            echo "Using custom SDL include path: $2"
+        fi
+    elif [ ! -d "$DIR/SDL" ]; then
+        echo "Using SDL include path from clone"
+        git clone https://github.com/libsdl-org/SDL $DIR/SDL
+        SDL_INCLUDE_DIRECTORY_PATH="$DIR/SDL/include"
+    else
+        echo "Using SDL include path from clone"
+        cd $DIR/SDL
+        git pull
+        cd $DIR
+        SDL_INCLUDE_DIRECTORY_PATH="$DIR/SDL/include"
+    fi
+
+    if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
+        SDL_BUILD_DIR="$DIR/cmake-build-release-sdl"
+        cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/SDL -B $SDL_BUILD_DIR -DSDL_STATIC=OFF -DSDL_TEST=OFF
+        cmake --build $SDL_BUILD_DIR --config Release
+
+        if [[ "$OS" == "Linux" ]]; then
+            SDL_LIBRARY_FILE_PATH_BUILD="$(readlink -f $SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME)"
+        elif [[ "$OS" == "Apple" ]]; then
+            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_LIBRARY_FILE_PATH"
+        elif [[ "$OS" == "Microsoft" ]]; then
+            SDL_LIBRARY_FILE_PATH_BUILD="$SDL_LIBRARY_FILE_PATH"
+        fi
+
+        if [[ ! -f "$SDL_LIBRARY_FILE_PATH_BUILD" ]]; then
+            echo "The file `$SDL_LIBRARY_FILE_PATH_BUILD` does not exist!"
+            exit 1
+        fi
+
+        mv "$SDL_LIBRARY_FILE_PATH_BUILD" "$SDL_LIBRARY_FILE_PATH"
+        rm -r $SDL_BUILD_DIR
+        rm -r $DIR/SDL
+    fi
+
     echo "Building SDL complete!"
-fi
+}
 
-echo "Building FNA3D..."
-build_dir="$DIR/cmake-build-release-fna3d"
-lib_dir="$DIR/lib"
-cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $build_dir -DSDL2_INCLUDE_DIRS="$sdl_include_directory_path" -DSDL2_LIBRARIES="$sdl_library_file_path"
-cmake --build $build_dir --config Release
-mkdir -p $lib_dir
-echo "Building FNA3D finished!"
+function build_fna3d() {
+    echo "Building FNA3D..."
+    build_dir="$DIR/cmake-build-release-fna3d"
+    lib_dir="$DIR/lib"
+    cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $build_dir -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
+    cmake --build $build_dir --config Release
+    mkdir -p $lib_dir
+    echo "Building FNA3D finished!"
 
-if [[ "$OS" == "Linux" ]]; then
-    filepath="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/libFNA3D.so)"
-    mv "$filepath" "$lib_dir/libFNA3D.so"
-elif [[ "$OS" == "Apple" ]]; then
-    filepath="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/libFNA3D.dylib)"
-    mv "$filepath" "$lib_dir/libFNA3D.dylib"
-    lc_rpath="$(dirname $sdl_library_file_path)"
-    install_name_tool -delete_rpath "$lc_rpath" "$lib_dir/libFNA3D.dylib"
-elif [[ "$OS" == "Microsoft" ]]; then
-    filepath="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/FNA3D.dll)"
-    mv "$filepath" "$lib_dir/FNA3D.dll"
-fi
+    if [[ "$OS" == "Linux" ]]; then
+        FNA3D_LIBRARY_FILENAME="libFNA3D.so"
+    elif [[ "$OS" == "Apple" ]]; then
+        FNA3D_LIBRARY_FILENAME="libFNA3D.dylib"
+    elif [[ "$OS" == "Microsoft" ]]; then
+        FNA3D_LIBRARY_FILENAME="FNA3D.dll"
+    fi
 
-rm -r $build_dir
-echo "Finished building native libraries!"
+    FNA3D_LIBRARY_FILEPATH="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/$FNA3D_LIBRARY_FILENAME)"
+    if [[ ! -f "$FNA3D_LIBRARY_FILEPATH" ]]; then
+        echo "The file `$FNA3D_LIBRARY_FILEPATH` does not exist!"
+        exit 1
+    fi
+    mv "$FNA3D_LIBRARY_FILEPATH" "$lib_dir/$FNA3D_LIBRARY_FILENAME"
+
+    rm -r $build_dir
+    echo "Finished building native libraries!"
+}
+
+build_sdl
+build_fna3d
