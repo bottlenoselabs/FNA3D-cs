@@ -83,8 +83,7 @@ function build_sdl() {
         fi
 
         mv "$SDL_LIBRARY_FILE_PATH_BUILD" "$SDL_LIBRARY_FILE_PATH"
-        rm -r $SDL_BUILD_DIR
-        rm -r $DIR/SDL
+        rm -rf $SDL_BUILD_DIR
     fi
 
     echo "Building SDL complete!"
@@ -99,19 +98,22 @@ function build_fna3d() {
 
     if [[ "$OS" == "Linux" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.so"
+        FNA3D_LIBRARY_FILE_PATH_BUILD="$(readlink -f $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
     elif [[ "$OS" == "Apple" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.dylib"
+        FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
     elif [[ "$OS" == "Microsoft" ]]; then
         FNA3D_LIBRARY_FILENAME="FNA3D.dll"
+        FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
     fi
+    FNA3D_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$FNA3D_LIBRARY_FILENAME"
 
-    FNA3D_LIBRARY_FILEPATH="$(perl -MCwd -e 'print Cwd::abs_path shift' $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
-    if [[ ! -f "$FNA3D_LIBRARY_FILEPATH" ]]; then
-        echo "The file '$FNA3D_LIBRARY_FILEPATH' does not exist!"
+    if [[ ! -f "$FNA3D_LIBRARY_FILE_PATH_BUILD" ]]; then
+        echo "The file '$FNA3D_LIBRARY_FILE_PATH_BUILD' does not exist!"
         exit 1
     fi
-    
-    mv "$FNA3D_LIBRARY_FILEPATH" "$LIB_DIRECTORY_PATH/$FNA3D_LIBRARY_FILENAME"
+
+    mv "$FNA3D_LIBRARY_FILE_PATH_BUILD" "$FNA3D_LIBRARY_FILE_PATH"
     rm -r $FNA3D_BUILD_DIR
     echo "Finished building native libraries!"
 }
