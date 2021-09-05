@@ -38,7 +38,7 @@ function set_target_build_platform {
             if [[ "$TARGET_BUILD_PLATFORM" == "microsoft" || "$TARGET_BUILD_PLATFORM" == "linux" || "$TARGET_BUILD_PLATFORM" == "apple" ]]; then
                 echo "Build platform: '$TARGET_BUILD_PLATFORM' (cross-compile override)"
             else
-                echo "Unknown '$TARGET_BUILD_PLATFORM' passed as first argument. Use 'default' to use the host build platform."
+                echo "Unknown '$TARGET_BUILD_PLATFORM' passed as first argument. Use 'default' to use the host build platform or use either: 'microsoft', 'linux', 'apple'."
                 exit 1
             fi
         fi
