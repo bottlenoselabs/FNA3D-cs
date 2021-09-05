@@ -136,4 +136,4 @@ function build_fna3d() {
 build_sdl
 build_fna3d
 echo "Finished building native libraries!"
-ls -d -1 "$LIB_DIR/"**/*
+ls -d "$LIB_DIR"/*
