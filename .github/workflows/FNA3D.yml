@@ -48,6 +48,8 @@ jobs:
     - name: "Install the default WSL distro"
       if: ${{ startsWith(matrix.platform.rid, 'win') }}
       uses: Vampire/setup-wsl@v1
+      with:
+        distribution: Ubuntu-18.04
 
     - name: "Clone Git repository"
       uses: actions/checkout@master
