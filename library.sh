@@ -4,7 +4,7 @@ LIB_DIR="$DIR/lib"
 mkdir -p $LIB_DIR
 
 if [[ ! -z "$1" ]]; then
-    BUILD_PLATFORM="$1"
+    TARGET_BUILD_PLATFORM="$1"
 fi
 if [[ ! -z "$2" ]]; then
     SDL_LIBRARY_FILE_PATH="$2"
@@ -13,7 +13,7 @@ if [[ ! -z "$3" ]]; then
     SDL_INCLUDE_DIRECTORY_PATH="$3"
 fi
 
-echo "Started '$0'"
+echo "Started '$0' $1 $2 $3"
 
 function set_target_build_platform_host() {
     uname_str="$(uname -a)"
