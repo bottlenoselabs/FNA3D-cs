@@ -1,25 +1,54 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-uname_str="$(uname -a)"
-case "${uname_str}" in
-    *Microsoft*)    OS="Microsoft";;
-    *microsoft*)    OS="Microsoft";;
-    Linux*)         OS="Linux";;
-    Darwin*)        OS="Apple";;
-    CYGWIN*)        OS="Linux";;
-    MINGW*)         OS="Microsoft";;
-    *Msys)          OS="Microsoft";;
-    *)              OS="UNKNOWN:${uname_str}"
-esac
-if [[ "$OS" == "Microsoft" ]]; then
+echo "Started '$0'"
+
+function set_default_build_platform() {
+    uname_str="$(uname -a)"
+    case "${uname_str}" in
+        *Microsoft*)    BUILD_PLATFORM="Microsoft";;
+        *microsoft*)    BUILD_PLATFORM="Microsoft";;
+        Linux*)         BUILD_PLATFORM="Linux";;
+        Darwin*)        BUILD_PLATFORM="Apple";;
+        CYGWIN*)        BUILD_PLATFORM="Linux";;
+        MINGW*)         BUILD_PLATFORM="Microsoft";;
+        *Msys)          BUILD_PLATFORM="Microsoft";;
+        *)              BUILD_PLATFORM="UNKNOWN:${uname_str}"
+    esac
+}
+
+function get_build_platform {
+    if [[ ! -z "$1" ]]; then
+        if [[ $1 == "default" ]]; then
+            set_default_build_platform
+            echo "Build platform: '$BUILD_PLATFORM' (host default)"
+        else
+            BUILD_PLATFORM="$1"
+            if [[ "$BUILD_PLATFORM" == "Microsoft" || "$BUILD_PLATFORM" == "Linux" || "$BUILD_PLATFORM" == "Apple" ]]; then
+                echo "Build platform: '$BUILD_PLATFORM' (cross-compile override)"
+            else
+                echo "Unknown '$BUILD_PLATFORM' passed as first argument. Use 'default' to use the host build platform."
+                exit 1
+            fi
+        fi
+    else
+        set_default_build_platform
+        echo "Build platform: '$BUILD_PLATFORM' (host default)"
+    fi
+}
+
+get_build_platform
+if [[ "$BUILD_PLATFORM" == "Microsoft" ]]; then
     CMAKE_TOOLCHAIN_ARGS="-DCMAKE_TOOLCHAIN_FILE=$DIR/mingw-w64-x86_64.cmake"
-elif [[ "$OS" == "Linux" ]]; then
+elif [[ "$BUILD_PLATFORM" == "Linux" ]]; then
     CMAKE_TOOLCHAIN_ARGS=""
-elif [[ "$OS" == "Apple" ]]; then
+elif [[ "$BUILD_PLATFORM" == "Apple" ]]; then
     CMAKE_TOOLCHAIN_ARGS=""
+else
+    echo "Unknown: $BUILD_PLATFORM"
+    exit 1
 fi
 
-echo "Started building native libraries... OS: $OS, Directory: $DIR"
+echo "Started building native libraries..."
 LIB_DIR="$DIR/lib"
 mkdir -p $LIB_DIR
 
@@ -42,13 +71,13 @@ function build_sdl() {
         else
             echo "Using custom SDL library path: $1"
         fi
-    elif [[ "$OS" == "Microsoft" ]]; then
+    elif [[ "$BUILD_PLATFORM" == "Microsoft" ]]; then
         SDL_LIBRARY_FILE_NAME="SDL2.dll"
         SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
-    elif [[ "$OS" == "Linux" ]]; then
+    elif [[ "$BUILD_PLATFORM" == "Linux" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.so"
         SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
-    elif [[ "$OS" == "Apple" ]]; then
+    elif [[ "$BUILD_PLATFORM" == "Apple" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.dylib"
         SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
     fi
@@ -77,11 +106,11 @@ function build_sdl() {
         cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/SDL -B $SDL_BUILD_DIR -DSDL_STATIC=OFF -DSDL_TEST=OFF
         cmake --build $SDL_BUILD_DIR --config Release
 
-        if [[ "$OS" == "Linux" ]]; then
+        if [[ "$BUILD_PLATFORM" == "Linux" ]]; then
             SDL_LIBRARY_FILE_PATH_BUILD="$(readlink -f $SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME)"
-        elif [[ "$OS" == "Apple" ]]; then
+        elif [[ "$BUILD_PLATFORM" == "Apple" ]]; then
             SDL_LIBRARY_FILE_PATH_BUILD="$SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME"
-        elif [[ "$OS" == "Microsoft" ]]; then
+        elif [[ "$BUILD_PLATFORM" == "Microsoft" ]]; then
             SDL_LIBRARY_FILE_PATH_BUILD="$SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME"
         fi
 
@@ -107,13 +136,13 @@ function build_fna3d() {
     cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $FNA3D_BUILD_DIR -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
     cmake --build $FNA3D_BUILD_DIR --config Release
 
-    if [[ "$OS" == "Linux" ]]; then
+    if [[ "$BUILD_PLATFORM" == "Linux" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.so"
         FNA3D_LIBRARY_FILE_PATH_BUILD="$(readlink -f $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
-    elif [[ "$OS" == "Apple" ]]; then
+    elif [[ "$BUILD_PLATFORM" == "Apple" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.dylib"
         FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
-    elif [[ "$OS" == "Microsoft" ]]; then
+    elif [[ "$BUILD_PLATFORM" == "Microsoft" ]]; then
         FNA3D_LIBRARY_FILENAME="FNA3D.dll"
         FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
     fi
@@ -137,3 +166,5 @@ build_sdl
 build_fna3d
 echo "Finished building native libraries!"
 ls -d "$LIB_DIR"/*
+
+echo "Ended '$0'"

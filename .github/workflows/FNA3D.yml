@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         platform:
-        - { name: Windows (x64), os: windows-latest, rid: win-x64 }
+        - { name: Windows (x64), os: ubuntu-latest, rid: win-x64 }
         - { name: Linux (x64), os: ubuntu-latest, rid: linux-x64 }
         - { name: macOS (x64), os: macos-latest, rid: osx-x64 }
     steps:
@@ -51,23 +51,12 @@ jobs:
         ref: ${{ env.GITHUB_REF }}
         submodules: 'recursive'
 
-    - name: "Install WSL distro"
+    - name: "Build native libraries (Windows)"
       if: ${{ startsWith(matrix.platform.rid, 'win') }}
-      uses: Vampire/setup-wsl@v1
-      with:
-        distribution: Ubuntu-18.04
+      shell: bash
+      run: ./library.sh Microsoft
 
-    - name: "Install dependencies (WSL)"
-      if: ${{ startsWith(matrix.platform.rid, 'win') }}
-      shell: wsl-bash {0}
-      run: apt-get update && apt-get install build-essential gdb cmake mingw-w64 -y
-
-    - name: "Build native library (WSL)"
-      if: ${{ startsWith(matrix.platform.rid, 'win') }}
-      shell: wsl-bash {0}
-      run: ./library.sh
-
-    - name: "Build native library (Unix)"
+    - name: "Build native libraries (Unix)"
       if: ${{ !(startsWith(matrix.platform.rid, 'win')) }}
       shell: bash
       run: ./library.sh
