@@ -57,7 +57,7 @@ jobs:
       with:
         distribution: Ubuntu-18.04
 
-     - name: "Build native library (WSL)"
+    - name: "Build native library (WSL)"
       if: ${{ startsWith(matrix.platform.rid, 'win') }}
       shell: wsl-bash {0}
       run: apt-get update &&
