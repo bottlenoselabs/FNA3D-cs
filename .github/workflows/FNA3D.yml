@@ -46,6 +46,7 @@ jobs:
     steps:
 
     - name: "Install the default WSL distro"
+      if: ${{ startsWith(matrix.platform.rid, 'win') }}
       uses: Vampire/setup-wsl@v1
 
     - name: "Clone Git repository"
