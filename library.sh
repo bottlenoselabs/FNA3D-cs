@@ -20,8 +20,8 @@ elif [[ "$OS" == "Apple" ]]; then
 fi
 
 echo "Started building native libraries... OS: $OS, Directory: $DIR"
-LIB_DIRECTORY_PATH="$DIR/lib"
-mkdir -p $LIB_DIRECTORY_PATH
+LIB_DIR="$DIR/lib"
+mkdir -p $LIB_DIR
 
 function exit_if_last_command_failed() {
     error=$?
@@ -44,13 +44,13 @@ function build_sdl() {
         fi
     elif [[ "$OS" == "Microsoft" ]]; then
         SDL_LIBRARY_FILE_NAME="SDL2.dll"
-        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
     elif [[ "$OS" == "Linux" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.so"
-        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
     elif [[ "$OS" == "Apple" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.dylib"
-        SDL_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$SDL_LIBRARY_FILE_NAME"
+        SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
     fi
 
     if [[ ! -z "$2" ]]; then
@@ -117,7 +117,7 @@ function build_fna3d() {
         FNA3D_LIBRARY_FILENAME="FNA3D.dll"
         FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
     fi
-    FNA3D_LIBRARY_FILE_PATH="$LIB_DIRECTORY_PATH/$FNA3D_LIBRARY_FILENAME"
+    FNA3D_LIBRARY_FILE_PATH="$LIB_DIR/$FNA3D_LIBRARY_FILENAME"
 
     if [[ ! -f "$FNA3D_LIBRARY_FILE_PATH_BUILD" ]]; then
         echo "The file '$FNA3D_LIBRARY_FILE_PATH_BUILD' does not exist!"
@@ -136,3 +136,4 @@ function build_fna3d() {
 build_sdl
 build_fna3d
 echo "Finished building native libraries!"
+ls -d -1 "$LIB_DIR/"**/*

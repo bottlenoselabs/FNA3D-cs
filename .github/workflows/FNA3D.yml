@@ -67,7 +67,7 @@ jobs:
     - name: "Build native library (Unix)"
       if: ${{ !(startsWith(matrix.platform.rid, 'win')) }}
       shell: bash
-      run: ./library.sh && ls ./lib
+      run: ./library.sh
 
     - name: "Install .NET"
       uses: actions/setup-dotnet@v1
