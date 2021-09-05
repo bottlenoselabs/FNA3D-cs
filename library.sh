@@ -48,6 +48,7 @@ else
 fi
 
 if [ ! -f "$sdl_library_file_path" ]; then
+    echo "Building SDL..."
     build_dir_sdl="$DIR/cmake-build-release-sdl"
     cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/SDL -B $build_dir_sdl -DSDL_STATIC=OFF
     cmake --build $build_dir_sdl --config Release
@@ -63,14 +64,16 @@ if [ ! -f "$sdl_library_file_path" ]; then
     fi
     rm -r $build_dir_sdl
     rm -r $DIR/SDL
+    echo "Building SDL complete!"
 fi
 
+echo "Building FNA3D..."
 build_dir="$DIR/cmake-build-release-fna3d"
 lib_dir="$DIR/lib"
-
 cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $build_dir -DSDL2_INCLUDE_DIRS="$sdl_include_directory_path" -DSDL2_LIBRARIES="$sdl_library_file_path"
 cmake --build $build_dir --config Release
 mkdir -p $lib_dir
+echo "Building FNA3D finished!"
 
 if [[ "$OS" == "Linux" ]]; then
     filepath="$(perl -MCwd -e 'print Cwd::abs_path shift' $build_dir/libFNA3D.so)"
@@ -86,4 +89,4 @@ elif [[ "$OS" == "Microsoft" ]]; then
 fi
 
 rm -r $build_dir
-echo "Finished building native libraries."
+echo "Finished building native libraries!"
