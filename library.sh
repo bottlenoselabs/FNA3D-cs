@@ -61,15 +61,15 @@ function build_sdl() {
             echo "Using custom SDL include path: $2"
         fi
     elif [ ! -d "$DIR/SDL" ]; then
-        echo "Using SDL include path from clone"
         git clone https://github.com/libsdl-org/SDL $DIR/SDL
         SDL_INCLUDE_DIRECTORY_PATH="$DIR/SDL/include"
+        echo "Using SDL include path from clone: $SDL_INCLUDE_DIRECTORY_PATH"
     else
-        echo "Using SDL include path from clone"
         cd $DIR/SDL
         git pull
         cd $DIR
         SDL_INCLUDE_DIRECTORY_PATH="$DIR/SDL/include"
+        echo "Using SDL include path from clone: $SDL_INCLUDE_DIRECTORY_PATH"
     fi
 
     if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
