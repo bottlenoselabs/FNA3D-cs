@@ -83,6 +83,8 @@ function build_sdl() {
         fi
 
         mv "$SDL_LIBRARY_FILE_PATH_BUILD" "$SDL_LIBRARY_FILE_PATH"
+        echo "Copied '$SDL_LIBRARY_FILE_PATH_BUILD' to '$SDL_LIBRARY_FILE_PATH'"
+
         rm -rf $SDL_BUILD_DIR
     fi
 
@@ -114,6 +116,8 @@ function build_fna3d() {
     fi
 
     mv "$FNA3D_LIBRARY_FILE_PATH_BUILD" "$FNA3D_LIBRARY_FILE_PATH"
+    echo "Copied '$FNA3D_LIBRARY_FILE_PATH_BUILD' to '$FNA3D_LIBRARY_FILE_PATH'"
+
     rm -r $FNA3D_BUILD_DIR
     echo "Finished building native libraries!"
 }
