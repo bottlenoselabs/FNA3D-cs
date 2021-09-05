@@ -60,7 +60,11 @@ jobs:
     - name: "Build native library (WSL)"
       if: ${{ startsWith(matrix.platform.rid, 'win') }}
       shell: wsl-bash {0}
-      run: apt-get update && apt-get install dos2unix && dos2unix ./library.sh && ./library.sh
+      run: apt-get update &&
+        apt-get install dos2unix &&
+        apt-get install cmake &&
+        dos2unix ./library.sh &&
+        ./library.sh
 
     - name: "Build native library (Unix)"
       if: ${{ !(startsWith(matrix.platform.rid, 'win')) }}
