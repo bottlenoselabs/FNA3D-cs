@@ -147,7 +147,7 @@ function build_fna3d() {
         FNA3D_LIBRARY_FILE_PATH_BUILD="$(readlink -f $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
     elif [[ "$TARGET_BUILD_PLATFORM" == "apple" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.dylib"
-        FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
+        FNA3D_LIBRARY_FILE_PATH_BUILD="$(perl -MCwd -e 'print Cwd::abs_path shift' $FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME)"
     elif [[ "$TARGET_BUILD_PLATFORM" == "microsoft" ]]; then
         FNA3D_LIBRARY_FILENAME="FNA3D.dll"
         FNA3D_LIBRARY_FILE_PATH_BUILD="$FNA3D_BUILD_DIR/$FNA3D_LIBRARY_FILENAME"
@@ -163,7 +163,7 @@ function build_fna3d() {
     exit_if_last_command_failed
     echo "Copied '$FNA3D_LIBRARY_FILE_PATH_BUILD' to '$FNA3D_LIBRARY_FILE_PATH'"
 
-    rm -r $FNA3D_BUILD_DIR
+    rm -rf $FNA3D_BUILD_DIR
     exit_if_last_command_failed
     echo "Building FNA3D finished!"
 }
