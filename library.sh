@@ -73,13 +73,18 @@ else
     exit 1
 fi
 
-if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
-    CMAKE_ARCH_ARGS="-A x64"
-elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
-    CMAKE_ARCH_ARGS="-A arm64"
+
+if [[ "$TARGET_BUILD_OS" == "windows" || "$TARGET_BUILD_OS" == "apple" ]]; then
+    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
+        CMAKE_ARCH_ARGS="-A x64"
+    elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
+        CMAKE_ARCH_ARGS="-A arm64"
+    else
+        echo "Unknown target build CPU architecture: $TARGET_BUILD_ARCH"
+        exit 1
+    fi
 else
-    echo "Unknown target build CPU architecture: $TARGET_BUILD_ARCH"
-    exit 1
+    CMAKE_ARCH_ARGS=""
 fi
 
 function exit_if_last_command_failed() {
