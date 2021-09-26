@@ -62,26 +62,21 @@ function set_target_build_arch {
 set_target_build_os
 set_target_build_arch
 
-if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
-    CMAKE_TOOLCHAIN_ARGS="-DCMAKE_TOOLCHAIN_FILE=$DIR/mingw-w64-x86_64.cmake"
-elif [[ "$TARGET_BUILD_OS" == "linux" ]]; then
-    CMAKE_TOOLCHAIN_ARGS=""
-elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
-    CMAKE_TOOLCHAIN_ARGS=""
-else
+if [[ "$TARGET_BUILD_OS" != "microsoft" && "$TARGET_BUILD_OS" != "apple" && "$TARGET_BUILD_OS" == "linux" ]]; then
     echo "Unknown target build operating system: $TARGET_BUILD_OS"
     exit 1
 fi
 
 if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
     if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
-        CMAKE_ARCH_ARGS="-A x64"
+        CMAKE_TOOLCHAIN_ARGS="-DCMAKE_TOOLCHAIN_FILE=$DIR/mingw-w64-x86_64.cmake"
     elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
         CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=x86_64"
     fi
 elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
     if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
-        CMAKE_ARCH_ARGS="-A ARM64"
+        echo "ARM64 not yet supported for Windows."
+        exit 1
     elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
         CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=arm64"
     fi
