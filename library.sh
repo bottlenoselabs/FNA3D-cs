@@ -74,17 +74,29 @@ else
 fi
 
 
-if [[ "$TARGET_BUILD_OS" == "windows" || "$TARGET_BUILD_OS" == "apple" ]]; then
+if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
     if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
         CMAKE_ARCH_ARGS="-A x64"
-    elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
-        CMAKE_ARCH_ARGS="-A arm64"
     else
-        echo "Unknown target build CPU architecture: $TARGET_BUILD_ARCH"
+        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
         exit 1
     fi
-else
-    CMAKE_ARCH_ARGS=""
+elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
+    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
+        CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=x86_64"
+    elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
+        CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=arm64"
+    else
+        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
+        exit 1
+    fi
+elif [[ "$TARGET_BUILD_OS" == "linux" ]]; then
+    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
+        CMAKE_ARCH_ARGS=""
+    else
+        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
+        exit 1
+    fi
 fi
 
 function exit_if_last_command_failed() {
