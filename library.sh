@@ -73,34 +73,21 @@ else
     exit 1
 fi
 
-
-if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
-    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
-        CMAKE_ARCH_ARGS_PRE=""
-        CMAKE_ARCH_ARGS_POST="-A x64"
-    else
-        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
-        exit 1
+if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
+    if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
+        CMAKE_ARCH_ARGS="-A x64"
+    elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
+        CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=x86_64"
     fi
-elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
-    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
-        CMAKE_ARCH_ARGS_PRE="-DCMAKE_OSX_ARCHITECTURES=x86_64"
-        CMAKE_ARCH_ARGS_POST=""
-    elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
-        CMAKE_ARCH_ARGS_PRE="-DCMAKE_OSX_ARCHITECTURES=arm64"
-        CMAKE_ARCH_ARGS_POST=""
-    else
-        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
-        exit 1
+elif [[ "$TARGET_BUILD_ARCH" == "arm64" ]]; then
+    if [[ "$TARGET_BUILD_OS" == "microsoft" ]]; then
+        CMAKE_ARCH_ARGS="-A ARM64"
+    elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
+        CMAKE_ARCH_ARGS="-DCMAKE_OSX_ARCHITECTURES=arm64"
     fi
-elif [[ "$TARGET_BUILD_OS" == "linux" ]]; then
-    if [[ "$TARGET_BUILD_ARCH" == "x86_64" ]]; then
-        CMAKE_ARCH_ARGS_PRE=""
-        CMAKE_ARCH_ARGS_POST=""
-    else
-        echo "Unknown target build CPU architecture for '$TARGET_BUILD_OS': $TARGET_BUILD_ARCH"
-        exit 1
-    fi
+else
+    echo "Unknown target build CPU architecture: $TARGET_BUILD_ARCH"
+    exit 1
 fi
 
 function exit_if_last_command_failed() {
@@ -152,8 +139,8 @@ function build_sdl() {
 
     if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
         SDL_BUILD_DIR="$DIR/cmake-build-release-sdl"
-        cmake $CMAKE_TOOLCHAIN_ARGS $CMAKE_ARCH_ARGS_PRE -S $DIR/SDL -B $SDL_BUILD_DIR -DSDL_STATIC=OFF -DSDL_TEST=OFF
-        cmake $CMAKE_ARCH_ARGS_POST --build $SDL_BUILD_DIR --config Release
+        cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/SDL -B $SDL_BUILD_DIR $CMAKE_ARCH_ARGS -DSDL_STATIC=OFF -DSDL_TEST=OFF
+        cmake --build $SDL_BUILD_DIR --config Release
 
         if [[ "$TARGET_BUILD_OS" == "linux" ]]; then
             SDL_LIBRARY_FILE_PATH_BUILD="$(readlink -f $SDL_BUILD_DIR/$SDL_LIBRARY_FILE_NAME)"
@@ -182,8 +169,8 @@ function build_sdl() {
 function build_fna3d() {
     echo "Building FNA3D..."
     FNA3D_BUILD_DIR="$DIR/cmake-build-release-fna3d"
-    cmake $CMAKE_TOOLCHAIN_ARGS $CMAKE_ARCH_ARGS_PRE -S $DIR/ext/FNA3D -B $FNA3D_BUILD_DIR -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
-    cmake $CMAKE_ARCH_ARGS_POST --build $FNA3D_BUILD_DIR --config Release $CMAKE_ARCH_ARGS
+    cmake $CMAKE_TOOLCHAIN_ARGS -S $DIR/ext/FNA3D -B $FNA3D_BUILD_DIR $CMAKE_ARCH_ARGS -DSDL2_INCLUDE_DIRS="$SDL_INCLUDE_DIRECTORY_PATH" -DSDL2_LIBRARIES="$SDL_LIBRARY_FILE_PATH"
+    cmake --build $FNA3D_BUILD_DIR --config Release
 
     if [[ "$TARGET_BUILD_OS" == "linux" ]]; then
         FNA3D_LIBRARY_FILENAME="libFNA3D.so"
