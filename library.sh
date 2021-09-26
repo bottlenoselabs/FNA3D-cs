@@ -62,7 +62,7 @@ function set_target_build_arch {
 set_target_build_os
 set_target_build_arch
 
-if [[ "$TARGET_BUILD_OS" != "microsoft" && "$TARGET_BUILD_OS" != "apple" && "$TARGET_BUILD_OS" == "linux" ]]; then
+if [[ "$TARGET_BUILD_OS" != "microsoft" && "$TARGET_BUILD_OS" != "apple" && "$TARGET_BUILD_OS" != "linux" ]]; then
     echo "Unknown target build operating system: $TARGET_BUILD_OS"
     exit 1
 fi
