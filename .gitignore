@@ -15,6 +15,9 @@
 /C2CS
 /C2CS.exe
 /ast/
+/libclang.dll
+/libclang.dylib
+/libclang.so
 
 # macOS
 .DS_store
