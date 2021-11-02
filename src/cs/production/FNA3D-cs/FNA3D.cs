@@ -965,7 +965,7 @@ public static unsafe partial class FNA3D
     public const int FNA3D_MAJOR_VERSION = 21;
 
     // MacroObjectLike @ FNA3D.h:462:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
-    public const int FNA3D_MINOR_VERSION = 10;
+    public const int FNA3D_MINOR_VERSION = 11;
 
     // MacroObjectLike @ FNA3D.h:463:9 (/home/runner/work/FNA3D-cs/FNA3D-cs/ext/FNA3D/include/FNA3D.h)
     public const int FNA3D_PATCH_VERSION = 0;
