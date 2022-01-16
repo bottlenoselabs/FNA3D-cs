@@ -109,7 +109,7 @@ function build_sdl() {
     elif [[ "$TARGET_BUILD_OS" == "linux" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.so"
         SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
-    elif [[ "$TARGET_BUILD_OS" == "apple" ]]; then
+    elif [[ "$TARGET_BUILD_OS" == "macos" ]]; then
         SDL_LIBRARY_FILE_NAME="libSDL2-2.0.dylib"
         SDL_LIBRARY_FILE_PATH="$LIB_DIR/$SDL_LIBRARY_FILE_NAME"
     fi
