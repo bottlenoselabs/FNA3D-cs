@@ -30,9 +30,13 @@ jobs:
         shell: bash
         run: dotnet tool install bottlenoselabs.C2CS --global --add-source https://www.myget.org/F/bottlenoselabs/api/v3/index.json --version "*-*"
 
-      - name: "bindgen"
+      - name: "bindgen: FNA3D"
         shell: bash
         run: c2cs
+
+      - name: "bindgen: FNA3D_Image"
+        shell: bash
+        run: c2cs config_FNA3DImage.json
 
       - name: "Add + commit + push (if necessary)"
         uses: EndBug/add-and-commit@v7
