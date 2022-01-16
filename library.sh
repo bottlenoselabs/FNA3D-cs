@@ -134,7 +134,7 @@ function build_sdl() {
 
     if [ ! -f "$SDL_LIBRARY_FILE_PATH" ]; then
         SDL_BUILD_DIR="$DIR/cmake-build-release-sdl"
-        rm -rf SDL_BUILD_DIR
+        rm -rf $SDL_BUILD_DIR
 
         cmake -S $DIR/SDL -B $SDL_BUILD_DIR $CMAKE_ARCH_ARGS \
             `#Change output directories` \
