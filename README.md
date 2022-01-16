@@ -11,7 +11,7 @@ Automatically updated C# bindings for https://github.com/FNA-XNA/FNA3D with nati
 3. Build the native library by running `library.sh`. To execute `.sh` scripts on Windows, use Git Bash which can be installed with Git itself: https://git-scm.com/download/win. The `library.sh` script requires that CMake is installed and in your path.
 4. Import the MSBuild `FNA3D.props` file which is located in the root of this directory to your `.csproj` file to setup everything you need.
 ```xml
-<!-- flecs: bindings + native library -->
+<!-- FNA3D: bindings + native library -->
 <Import Project="$([System.IO.Path]::GetFullPath('path/to/FNA3D.props'))" />
 ```
 
