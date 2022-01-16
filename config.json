@@ -1,0 +1,6 @@
+{
+    "inputFilePath": "ext/FNA3D/include/FNA3D.h",
+    "outputFilePath": "src/cs/production/FNA3D/FNA3D.cs",
+    "namespaceName": "bottlenoselabs",
+    "machineBitWidth": 64
+  }

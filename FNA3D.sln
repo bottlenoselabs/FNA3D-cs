@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Production", "Production", "{39423871-7923-4AFB-A756-35E17FCBA274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA3D-cs", "src\cs\production\FNA3D-cs\FNA3D-cs.csproj", "{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA3D", "src\cs\production\FNA3D\FNA3D.csproj", "{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,12 +10,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E832CEC4-37E8-475A-8AF0-CE9AE80C0F47} = {39423871-7923-4AFB-A756-35E17FCBA274}
+		{6BEA3D3D-29E6-4C47-B690-2B5F29D5B447} = {39423871-7923-4AFB-A756-35E17FCBA274}
 	EndGlobalSection
 EndGlobal
