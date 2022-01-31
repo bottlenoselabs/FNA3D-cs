@@ -36,299 +36,299 @@ namespace bottlenoselabs
         [DllImport(LibraryName)]
         public static extern uint FNA3D_PrepareWindowAttributes();
 
-        // Function @ FNA3D.h:511:15
+        // Function @ FNA3D.h:515:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetDrawableSize(void* window, int* w, int* h);
 
-        // Function @ FNA3D.h:522:24
+        // Function @ FNA3D.h:526:24
         [DllImport(LibraryName)]
         public static extern FNA3D_Device* FNA3D_CreateDevice(FNA3D_PresentationParameters* presentationParameters, byte debugMode);
 
-        // Function @ FNA3D.h:528:15
+        // Function @ FNA3D.h:532:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_DestroyDevice(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:538:15
+        // Function @ FNA3D.h:542:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SwapBuffers(FNA3D_Device* device, FNA3D_Rect* sourceRectangle, FNA3D_Rect* destinationRectangle, void* overrideWindowHandle);
 
-        // Function @ FNA3D.h:555:15
+        // Function @ FNA3D.h:559:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_Clear(FNA3D_Device* device, FNA3D_ClearOptions options, FNA3D_Vec4* color, float depth, int stencil);
 
-        // Function @ FNA3D.h:574:15
+        // Function @ FNA3D.h:578:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_DrawIndexedPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int baseVertex, int minVertexIndex, int numVertices, int startIndex, int primitiveCount, FNA3D_Buffer* indices, FNA3D_IndexElementSize indexElementSize);
 
-        // Function @ FNA3D.h:598:15
+        // Function @ FNA3D.h:602:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_DrawInstancedPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int baseVertex, int minVertexIndex, int numVertices, int startIndex, int primitiveCount, int instanceCount, FNA3D_Buffer* indices, FNA3D_IndexElementSize indexElementSize);
 
-        // Function @ FNA3D.h:616:15
+        // Function @ FNA3D.h:620:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_DrawPrimitives(FNA3D_Device* device, FNA3D_PrimitiveType primitiveType, int vertexStart, int primitiveCount);
 
-        // Function @ FNA3D.h:632:15
+        // Function @ FNA3D.h:636:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetViewport(FNA3D_Device* device, FNA3D_Viewport* viewport);
 
-        // Function @ FNA3D.h:641:15
+        // Function @ FNA3D.h:645:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetScissorRect(FNA3D_Device* device, FNA3D_Rect* scissor);
 
-        // Function @ FNA3D.h:647:15
+        // Function @ FNA3D.h:651:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetBlendFactor(FNA3D_Device* device, FNA3D_Color* blendFactor);
 
-        // Function @ FNA3D.h:656:15
+        // Function @ FNA3D.h:660:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetBlendFactor(FNA3D_Device* device, FNA3D_Color* blendFactor);
 
-        // Function @ FNA3D.h:665:18
+        // Function @ FNA3D.h:669:18
         [DllImport(LibraryName)]
         public static extern int FNA3D_GetMultiSampleMask(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:671:15
+        // Function @ FNA3D.h:675:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetMultiSampleMask(FNA3D_Device* device, int mask);
 
-        // Function @ FNA3D.h:677:18
+        // Function @ FNA3D.h:681:18
         [DllImport(LibraryName)]
         public static extern int FNA3D_GetReferenceStencil(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:683:15
+        // Function @ FNA3D.h:687:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetReferenceStencil(FNA3D_Device* device, int @ref);
 
-        // Function @ FNA3D.h:693:15
+        // Function @ FNA3D.h:697:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetBlendState(FNA3D_Device* device, FNA3D_BlendState* blendState);
 
-        // Function @ FNA3D.h:704:15
+        // Function @ FNA3D.h:708:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetDepthStencilState(FNA3D_Device* device, FNA3D_DepthStencilState* depthStencilState);
 
-        // Function @ FNA3D.h:716:15
+        // Function @ FNA3D.h:720:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ApplyRasterizerState(FNA3D_Device* device, FNA3D_RasterizerState* rasterizerState);
 
-        // Function @ FNA3D.h:729:15
+        // Function @ FNA3D.h:733:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_VerifySampler(FNA3D_Device* device, int index, FNA3D_Texture* texture, FNA3D_SamplerState* sampler);
 
-        // Function @ FNA3D.h:744:15
+        // Function @ FNA3D.h:748:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_VerifyVertexSampler(FNA3D_Device* device, int index, FNA3D_Texture* texture, FNA3D_SamplerState* sampler);
 
-        // Function @ FNA3D.h:766:15
+        // Function @ FNA3D.h:770:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ApplyVertexBufferBindings(FNA3D_Device* device, FNA3D_VertexBufferBinding* bindings, int numBindings, byte bindingsUpdated, int baseVertex);
 
-        // Function @ FNA3D.h:787:15
+        // Function @ FNA3D.h:791:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetRenderTargets(FNA3D_Device* device, FNA3D_RenderTargetBinding* renderTargets, int numRenderTargets, FNA3D_Renderbuffer* depthStencilBuffer, FNA3D_DepthFormat depthFormat, byte preserveTargetContents);
 
-        // Function @ FNA3D.h:801:15
+        // Function @ FNA3D.h:805:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ResolveTarget(FNA3D_Device* device, FNA3D_RenderTargetBinding* target);
 
-        // Function @ FNA3D.h:813:15
+        // Function @ FNA3D.h:817:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ResetBackbuffer(FNA3D_Device* device, FNA3D_PresentationParameters* presentationParameters);
 
-        // Function @ FNA3D.h:829:15
+        // Function @ FNA3D.h:833:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ReadBackbuffer(FNA3D_Device* device, int x, int y, int w, int h, void* data, int dataLength);
 
-        // Function @ FNA3D.h:844:15
+        // Function @ FNA3D.h:848:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetBackbufferSize(FNA3D_Device* device, int* w, int* h);
 
-        // Function @ FNA3D.h:854:30
+        // Function @ FNA3D.h:858:30
         [DllImport(LibraryName)]
         public static extern FNA3D_SurfaceFormat FNA3D_GetBackbufferSurfaceFormat(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:862:28
+        // Function @ FNA3D.h:866:28
         [DllImport(LibraryName)]
         public static extern FNA3D_DepthFormat FNA3D_GetBackbufferDepthFormat(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:868:18
+        // Function @ FNA3D.h:872:18
         [DllImport(LibraryName)]
         public static extern int FNA3D_GetBackbufferMultiSampleCount(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:883:25
+        // Function @ FNA3D.h:887:25
         [DllImport(LibraryName)]
         public static extern FNA3D_Texture* FNA3D_CreateTexture2D(FNA3D_Device* device, FNA3D_SurfaceFormat format, int width, int height, int levelCount, byte isRenderTarget);
 
-        // Function @ FNA3D.h:903:25
+        // Function @ FNA3D.h:907:25
         [DllImport(LibraryName)]
         public static extern FNA3D_Texture* FNA3D_CreateTexture3D(FNA3D_Device* device, FNA3D_SurfaceFormat format, int width, int height, int depth, int levelCount);
 
-        // Function @ FNA3D.h:922:25
+        // Function @ FNA3D.h:926:25
         [DllImport(LibraryName)]
         public static extern FNA3D_Texture* FNA3D_CreateTextureCube(FNA3D_Device* device, FNA3D_SurfaceFormat format, int size, int levelCount, byte isRenderTarget);
 
-        // Function @ FNA3D.h:937:15
+        // Function @ FNA3D.h:941:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeTexture(FNA3D_Device* device, FNA3D_Texture* texture);
 
-        // Function @ FNA3D.h:953:15
+        // Function @ FNA3D.h:957:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetTextureData2D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:978:15
+        // Function @ FNA3D.h:982:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetTextureData3D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int z, int w, int h, int d, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1004:15
+        // Function @ FNA3D.h:1008:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetTextureDataCube(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, FNA3D_CubeMapFace cubeMapFace, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1029:15
+        // Function @ FNA3D.h:1033:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetTextureDataYUV(FNA3D_Device* device, FNA3D_Texture* y, FNA3D_Texture* u, FNA3D_Texture* v, int yWidth, int yHeight, int uvWidth, int uvHeight, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1055:15
+        // Function @ FNA3D.h:1059:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetTextureData2D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1082:15
+        // Function @ FNA3D.h:1086:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetTextureData3D(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int z, int w, int h, int d, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1111:15
+        // Function @ FNA3D.h:1115:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetTextureDataCube(FNA3D_Device* device, FNA3D_Texture* texture, int x, int y, int w, int h, FNA3D_CubeMapFace cubeMapFace, int level, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1136:30
+        // Function @ FNA3D.h:1140:30
         [DllImport(LibraryName)]
         public static extern FNA3D_Renderbuffer* FNA3D_GenColorRenderbuffer(FNA3D_Device* device, int width, int height, FNA3D_SurfaceFormat format, int multiSampleCount, FNA3D_Texture* texture);
 
-        // Function @ FNA3D.h:1154:30
+        // Function @ FNA3D.h:1158:30
         [DllImport(LibraryName)]
         public static extern FNA3D_Renderbuffer* FNA3D_GenDepthStencilRenderbuffer(FNA3D_Device* device, int width, int height, FNA3D_DepthFormat format, int multiSampleCount);
 
-        // Function @ FNA3D.h:1169:15
+        // Function @ FNA3D.h:1173:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeRenderbuffer(FNA3D_Device* device, FNA3D_Renderbuffer* renderbuffer);
 
-        // Function @ FNA3D.h:1185:24
+        // Function @ FNA3D.h:1189:24
         [DllImport(LibraryName)]
         public static extern FNA3D_Buffer* FNA3D_GenVertexBuffer(FNA3D_Device* device, byte dynamic, FNA3D_BufferUsage usage, int sizeInBytes);
 
-        // Function @ FNA3D.h:1199:15
+        // Function @ FNA3D.h:1203:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeVertexBuffer(FNA3D_Device* device, FNA3D_Buffer* buffer);
 
-        // Function @ FNA3D.h:1220:15
+        // Function @ FNA3D.h:1224:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetVertexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int elementCount, int elementSizeInBytes, int vertexStride, FNA3D_SetDataOptions options);
 
-        // Function @ FNA3D.h:1246:15
+        // Function @ FNA3D.h:1250:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetVertexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int elementCount, int elementSizeInBytes, int vertexStride);
 
-        // Function @ FNA3D.h:1267:24
+        // Function @ FNA3D.h:1271:24
         [DllImport(LibraryName)]
         public static extern FNA3D_Buffer* FNA3D_GenIndexBuffer(FNA3D_Device* device, byte dynamic, FNA3D_BufferUsage usage, int sizeInBytes);
 
-        // Function @ FNA3D.h:1281:15
+        // Function @ FNA3D.h:1285:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeIndexBuffer(FNA3D_Device* device, FNA3D_Buffer* buffer);
 
-        // Function @ FNA3D.h:1294:15
+        // Function @ FNA3D.h:1298:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetIndexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int dataLength, FNA3D_SetDataOptions options);
 
-        // Function @ FNA3D.h:1310:15
+        // Function @ FNA3D.h:1314:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetIndexBufferData(FNA3D_Device* device, FNA3D_Buffer* buffer, int offsetInBytes, void* data, int dataLength);
 
-        // Function @ FNA3D.h:1335:15
+        // Function @ FNA3D.h:1339:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_CreateEffect(FNA3D_Device* device, byte* effectCode, uint effectCodeLength, FNA3D_Effect** effect, MOJOSHADER_effect** effectData);
 
-        // Function @ FNA3D.h:1349:15
+        // Function @ FNA3D.h:1353:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_CloneEffect(FNA3D_Device* device, FNA3D_Effect* cloneSource, FNA3D_Effect** effect, MOJOSHADER_effect** effectData);
 
-        // Function @ FNA3D.h:1363:15
+        // Function @ FNA3D.h:1367:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeEffect(FNA3D_Device* device, FNA3D_Effect* effect);
 
-        // Function @ FNA3D.h:1373:15
+        // Function @ FNA3D.h:1377:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetEffectTechnique(FNA3D_Device* device, FNA3D_Effect* effect, MOJOSHADER_effectTechnique* technique);
 
-        // Function @ FNA3D.h:1388:15
+        // Function @ FNA3D.h:1392:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_ApplyEffect(FNA3D_Device* device, FNA3D_Effect* effect, uint pass, MOJOSHADER_effectStateChanges* stateChanges);
 
-        // Function @ FNA3D.h:1405:15
+        // Function @ FNA3D.h:1409:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_BeginPassRestore(FNA3D_Device* device, FNA3D_Effect* effect, MOJOSHADER_effectStateChanges* stateChanges);
 
-        // Function @ FNA3D.h:1416:15
+        // Function @ FNA3D.h:1420:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_EndPassRestore(FNA3D_Device* device, FNA3D_Effect* effect);
 
-        // Function @ FNA3D.h:1427:23
+        // Function @ FNA3D.h:1431:23
         [DllImport(LibraryName)]
         public static extern FNA3D_Query* FNA3D_CreateQuery(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1436:15
+        // Function @ FNA3D.h:1440:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_AddDisposeQuery(FNA3D_Device* device, FNA3D_Query* query);
 
-        // Function @ FNA3D.h:1442:15
+        // Function @ FNA3D.h:1446:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_QueryBegin(FNA3D_Device* device, FNA3D_Query* query);
 
-        // Function @ FNA3D.h:1450:15
+        // Function @ FNA3D.h:1454:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_QueryEnd(FNA3D_Device* device, FNA3D_Query* query);
 
-        // Function @ FNA3D.h:1458:18
+        // Function @ FNA3D.h:1462:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_QueryComplete(FNA3D_Device* device, FNA3D_Query* query);
 
-        // Function @ FNA3D.h:1466:18
+        // Function @ FNA3D.h:1470:18
         [DllImport(LibraryName)]
         public static extern int FNA3D_QueryPixelCount(FNA3D_Device* device, FNA3D_Query* query);
 
-        // Function @ FNA3D.h:1474:18
+        // Function @ FNA3D.h:1478:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsDXT1(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1477:18
+        // Function @ FNA3D.h:1481:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsS3TC(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1480:18
+        // Function @ FNA3D.h:1484:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsBC7(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1483:18
+        // Function @ FNA3D.h:1487:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsHardwareInstancing(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1486:18
+        // Function @ FNA3D.h:1490:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsNoOverwrite(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1489:18
+        // Function @ FNA3D.h:1493:18
         [DllImport(LibraryName)]
         public static extern byte FNA3D_SupportsSRGBRenderTargets(FNA3D_Device* device);
 
-        // Function @ FNA3D.h:1492:15
+        // Function @ FNA3D.h:1496:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_GetMaxTextureSlots(FNA3D_Device* device, int* textures, int* vertexTextures);
 
-        // Function @ FNA3D.h:1505:18
+        // Function @ FNA3D.h:1509:18
         [DllImport(LibraryName)]
         public static extern int FNA3D_GetMaxMultiSampleCount(FNA3D_Device* device, FNA3D_SurfaceFormat format, int multiSampleCount);
 
-        // Function @ FNA3D.h:1518:15
+        // Function @ FNA3D.h:1522:15
         [DllImport(LibraryName)]
         public static extern void FNA3D_SetStringMarker(FNA3D_Device* device, CString text);
 
@@ -689,19 +689,19 @@ namespace bottlenoselabs
         {
         }
 
-        // OpaqueType @ FNA3D.h:1322:34
+        // OpaqueType @ FNA3D.h:1326:34
         [StructLayout(LayoutKind.Sequential)]
         public struct MOJOSHADER_effect
         {
         }
 
-        // OpaqueType @ FNA3D.h:1323:43
+        // OpaqueType @ FNA3D.h:1327:43
         [StructLayout(LayoutKind.Sequential)]
         public struct MOJOSHADER_effectTechnique
         {
         }
 
-        // OpaqueType @ FNA3D.h:1324:46
+        // OpaqueType @ FNA3D.h:1328:46
         [StructLayout(LayoutKind.Sequential)]
         public struct MOJOSHADER_effectStateChanges
         {
