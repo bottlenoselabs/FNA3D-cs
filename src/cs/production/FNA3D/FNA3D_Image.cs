@@ -25,19 +25,19 @@ namespace bottlenoselabs
         private const string LibraryName = "FNA3D_Image";
 
         // Function @ FNA3D_Image.h:73:19
-        [DllImport(LibraryName)]
+        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* FNA3D_Image_Load(FNA3D_Image_ReadFunc readFunc, FNA3D_Image_SkipFunc skipFunc, FNA3D_Image_EOFFunc eofFunc, void* context, int* w, int* h, int* len, int forceW, int forceH, byte zoom);
 
         // Function @ FNA3D_Image.h:90:15
-        [DllImport(LibraryName)]
+        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void FNA3D_Image_Free(byte* mem);
 
         // Function @ FNA3D_Image.h:110:15
-        [DllImport(LibraryName)]
+        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void FNA3D_Image_SavePNG(FNA3D_Image_WriteFunc writeFunc, void* context, int srcW, int srcH, int dstW, int dstH, byte* data);
 
         // Function @ FNA3D_Image.h:131:15
-        [DllImport(LibraryName)]
+        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void FNA3D_Image_SaveJPG(FNA3D_Image_WriteFunc writeFunc, void* context, int srcW, int srcH, int dstW, int dstH, byte* data, int quality);
 
         // FunctionPointer @ FNA3D_Image.h:46:30
