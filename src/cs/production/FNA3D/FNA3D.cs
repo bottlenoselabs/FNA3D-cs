@@ -979,7 +979,7 @@ namespace bottlenoselabs
         public const int FNA3D_MAJOR_VERSION = 22;
 
         // MacroDefinition @ FNA3D.h:466:9
-        public const int FNA3D_MINOR_VERSION = 3;
+        public const int FNA3D_MINOR_VERSION = 4;
 
         // MacroDefinition @ FNA3D.h:467:9
         public const int FNA3D_PATCH_VERSION = 0;
