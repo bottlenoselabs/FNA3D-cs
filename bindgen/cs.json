@@ -1,0 +1,9 @@
+{
+    "$schema": "https://raw.githubusercontent.com/bottlenoselabs/c2cs/main/schema.json",
+    "directory": "./ast",
+    "cs": {
+        "output_file": "../FNA3D.cs",
+        "namespace": "bottlenoselabs",
+        "library_name": "FNA3D"
+    }
+}

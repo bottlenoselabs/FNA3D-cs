@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bottlenoselabs/c2cs/main/schema.json",
+  "directory": "./ast",
+  "c": {
+    "input_file": "../src/c/FNA3D/include/_FNA3D.h",
+    "user_include_directories": [
+      "../ext/FNA3D/include"
+    ],
+    "platforms": {
+      "aarch64-apple-darwin": {},
+      "x86_64-apple-darwin": {}
+    }
+  }
+}

@@ -12,15 +12,10 @@
 /lib/
 
 # C2CS
-/C2CS
-/C2CS.exe
-/ast/
-/libclang.dll
-/libclang.dylib
-/libclang.so
+/bindgen/**/ast
 
 # macOS
 .DS_store
 
 # SDL
-/SDL/
+ext/SDL/
