@@ -19,3 +19,7 @@
 
 # SDL
 ext/SDL/
+
+# scripts
+/build
+/ext/scripts

@@ -7,8 +7,12 @@
 #   $4: The file path of the SDL shared library (.dll/.so/.dylib).
 # OUTPUT: The built shared library if successful, or nothing upon first failure.
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-. $DIR/ext/scripts/utility.sh
+DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+if [[ -z $SCRIPTS_DIRECTORY ]]; then
+    SCRIPTS_DIRECTORY="$DIRECTORY/ext/scripts"
+    git clone "https://github.com/bottlenoselabs/scripts" "$SCRIPTS_DIRECTORY" 2> /dev/null 1> /dev/null || git -C "$SCRIPTS_DIRECTORY" pull 1> /dev/null
+fi
+. $SCRIPTS_DIRECTORY/utility.sh
 
 if [[ ! -z "$1" ]]; then
     TARGET_BUILD_OS="$1"
@@ -34,15 +38,15 @@ if [[ ! -z "$SDL_INCLUDE_DIRECTORY_PATH" ]]; then
     fi
     CMAKE_SDL2_INCLUDE_DIRS="-DSDL2_INCLUDE_DIRS=$SDL_INCLUDE_DIRECTORY_PATH"
 else
-    if [[ -d "$DIR/ext/SDL" ]]; then
-        cd $DIR/ext/SDL
+    if [[ -d "$DIRECTORY/ext/SDL" ]]; then
+        cd $DIRECTORY/ext/SDL
         git pull
-        cd $DIR
+        cd $DIRECTORY
     else
-        git clone https://github.com/libsdl-org/SDL $DIR/ext/SDL
+        git clone https://github.com/libsdl-org/SDL $DIRECTORY/ext/SDL
     fi
     HAS_CLONED_SDL=1
-    CMAKE_SDL2_INCLUDE_DIRS="-DSDL2_INCLUDE_DIRS=$DIR/ext/SDL/include"
+    CMAKE_SDL2_INCLUDE_DIRS="-DSDL2_INCLUDE_DIRS=$DIRECTORY/ext/SDL/include"
 fi
 
 SDL_LIBRARY_FILE_PATH=`get_full_path $4`
@@ -59,11 +63,11 @@ else
     fi
 
     if [[ "$OS" == "linux" ]]; then
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/libSDL2.so"
+        SDL_LIBRARY_FILE_PATH="$DIRECTORY/lib/libSDL2.so"
     elif [[ "$OS" == "macos" ]]; then
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/libSDL2.dylib"
+        SDL_LIBRARY_FILE_PATH="$DIRECTORY/lib/libSDL2.dylib"
     elif [[ "$OS" == "windows" ]]; then
-        SDL_LIBRARY_FILE_PATH="$DIR/lib/SDL2.dll"
+        SDL_LIBRARY_FILE_PATH="$DIRECTORY/lib/SDL2.lib"
     else
         echo "Unknown OS: '$OS'"
         exit 1
@@ -76,9 +80,10 @@ else
         SDL_LIBRARY_FILENAME="SDL2-2.0"
     fi
 
-    $DIR/ext/scripts/c/library/main.sh \
-        $DIR/ext/SDL \
-        $DIR/lib \
+    $SCRIPTS_DIRECTORY/c/library/main.sh \
+        $DIRECTORY/ext/SDL \
+        $DIRECTORY/build \
+        $DIRECTORY/lib \
         $SDL_LIBRARY_FILENAME \
         $SDL_LIBRARY_FILENAME_PINVOKE \
         $TARGET_BUILD_OS \
@@ -87,9 +92,10 @@ else
 fi
 CMAKE_SDL2_LIBRARIES="-DSDL2_LIBRARIES=$SDL_LIBRARY_FILE_PATH"
 
-$DIR/ext/scripts/c/library/main.sh \
-    $DIR/ext/FNA3D \
-    $DIR/lib \
+$SCRIPTS_DIRECTORY/c/library/main.sh \
+    $DIRECTORY/ext/FNA3D \
+    $DIRECTORY/build \
+    $DIRECTORY/lib \
     "FNA3D" \
     "FNA3D" \
     $TARGET_BUILD_OS \
